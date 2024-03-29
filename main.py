@@ -4,7 +4,7 @@ from game import Game
 pygame.init() 
 
 pygame.display.set_caption("Shooter")
-screen = pygame.display.set_mode((1080,720))
+screen = pygame.display.set_mode((1080,720)) 
 
 backround = pygame.image.load("assets/bg.jpg")
 
