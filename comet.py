@@ -17,6 +17,12 @@ class Comet(pygame.sprite.Sprite):
     def remove(self) -> None:
         self.comet_event.all_comets.remove(self)
 
+        if len(self.comet_event.all_comets) == 0:
+            self.comet_event.reset_percent()
+            self.comet_event.game.spawn_monster()
+            self.comet_event.game.spawn_monster()
+
+
     def fall(self):
         self.temps += 1
         temps = self.temps/1000
@@ -24,6 +30,10 @@ class Comet(pygame.sprite.Sprite):
 
         if self.rect.y >=500:
             self.remove()
+
+            if len(self.comet_event.all_comets) == 0:
+                self.comet_event.reset_percent()
+                self.comet_event.fall_mode = False
 
         if self.comet_event.game.check_collision(
             self, 
